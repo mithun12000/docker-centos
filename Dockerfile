@@ -26,7 +26,7 @@ RUN alternatives --install /usr/bin/java java /usr/java/latest/bin/java 5
 RUN alternatives --install /usr/bin/java java /usr/java/jdk1.7.0_79/bin/java 5
 RUN alternatives --install /usr/bin/javac javac /usr/java/latest/bin/javac 5
 RUN alternatives --install /usr/bin/javac javac /usr/java/jdk1.7.0_79/bin/javac 5
-RUN alternatives --set jar /usr/java/jdk1.7.0_79/bin/jar
+#RUN alternatives --set jar /usr/java/jdk1.7.0_79/bin/jar
 
 RUN echo "JAVA_HOME=/usr/java/jdk1.7.0_79" > /etc/profile.d/java.sh
 RUN echo "JRE_HOME=/usr/java/jdk1.7.0_79/jre" >> /etc/profile.d/java.sh
