@@ -26,6 +26,8 @@ RUN alternatives --install /usr/bin/java java /usr/java/latest/bin/java 5
 RUN alternatives --install /usr/bin/java java /usr/java/jdk1.7.0_79/bin/java 5
 RUN alternatives --install /usr/bin/javac javac /usr/java/latest/bin/javac 5
 RUN alternatives --install /usr/bin/javac javac /usr/java/jdk1.7.0_79/bin/javac 5
+RUN alternatives --install /usr/bin/javaws javaws /usr/java/latest/bin/javaws 5
+RUN alternatives --install /usr/bin/javaws javaws /usr/java/jdk1.7.0_79/bin/javaws 5
 #RUN alternatives --set jar /usr/java/jdk1.7.0_79/bin/jar
 
 RUN echo "JAVA_HOME=/usr/java/jdk1.7.0_79" > /etc/profile.d/java.sh
@@ -36,15 +38,10 @@ RUN echo 'export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin' >> /etc/profile.d/java
 
 #set scala version
 RUN export SCALA_VERSION=scala-2.11.8
-RUN wget http://www.scala-lang.org/files/archive/${SCALA_VERSION}.tgz
+RUN wget http://www.scala-lang.org/files/archive/scala-2.11.8.rpm
 RUN echo "SCALA_HOME=/usr/local/scala/scala-2.11.8" > /etc/profile.d/scala.sh
 RUN echo 'export SCALA_HOME' >> /etc/profile.d/scala.sh
-RUN mkdir -p /usr/local/scala
-RUN cp $SCALA_VERSION.tgz /usr/local/scala/
-RUN cd /usr/local/scala/
-RUN tar xvf $SCALA_VERSION.tgz
-RUN rm -f $SCALA_VERSION.tgz
-#RUN chown -R root:root /usr/local/scala
+RUN rm -f scala-2.11.8.rpm
 
 RUN alternatives --install "/usr/bin/scala" "scala" "/usr/local/scala/scala-2.11.8/bin/scala" 1
 RUN alternatives --install "/usr/bin/scalac" "scalac" "/usr/local/scala/scala-2.11.8/bin/scalac" 1
