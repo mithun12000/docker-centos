@@ -37,7 +37,7 @@ RUN echo 'export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin' >> /etc/profile.d/java
 #set scala version
 RUN export SCALA_VERSION=scala-2.11.8
 RUN wget http://www.scala-lang.org/files/archive/${SCALA_VERSION}.tgz
-RUN echo "SCALA_HOME=/usr/local/scala/scala-2.11.5" > /etc/profile.d/scala.sh
+RUN echo "SCALA_HOME=/usr/local/scala/scala-2.11.8" > /etc/profile.d/scala.sh
 RUN echo 'export SCALA_HOME' >> /etc/profile.d/scala.sh
 RUN mkdir -p /usr/local/scala
 RUN cp $SCALA_VERSION.tgz /usr/local/scala/
@@ -46,9 +46,8 @@ RUN tar xvf $SCALA_VERSION.tgz
 RUN rm -f $SCALA_VERSION.tgz
 #RUN chown -R root:root /usr/local/scala
 
-RUN alternatives --install "/usr/bin/scala" "scala" "/usr/local/scala/scala-2.11.5/bin/scala" 1
-RUN alternatives --install "/usr/bin/scalac" "scalac" "/usr/local/scala/scala-2.11.5/bin/scalac" 1
-RUN alternatives --install "/usr/bin/scalap" "scalap" "/usr/local/scala/scala-2.11.5/bin/scalap" 1
-RUN alternatives --install "/usr/bin/scaladoc" "scaladoc" "/usr/local/scala/scala-2.11.5/bin/scaladoc" 1
-RUN alternatives --install "/usr/bin/fsc" "fsc" "/usr/local/scala/scala-2.11.5/bin/fsc" 1
-
+RUN alternatives --install "/usr/bin/scala" "scala" "/usr/local/scala/scala-2.11.8/bin/scala" 1
+RUN alternatives --install "/usr/bin/scalac" "scalac" "/usr/local/scala/scala-2.11.8/bin/scalac" 1
+RUN alternatives --install "/usr/bin/scalap" "scalap" "/usr/local/scala/scala-2.11.8/bin/scalap" 1
+RUN alternatives --install "/usr/bin/scaladoc" "scaladoc" "/usr/local/scala/scala-2.11.8/bin/scaladoc" 1
+RUN alternatives --install "/usr/bin/fsc" "fsc" "/usr/local/scala/scala-2.11.8/bin/fsc" 1
