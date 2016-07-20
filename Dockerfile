@@ -39,12 +39,7 @@ RUN echo 'export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin' >> /etc/profile.d/java
 #set scala version
 RUN export SCALA_VERSION=scala-2.11.8
 RUN wget http://www.scala-lang.org/files/archive/scala-2.11.8.rpm
-RUN echo "SCALA_HOME=/usr/local/scala/scala-2.11.8" > /etc/profile.d/scala.sh
-RUN echo 'export SCALA_HOME' >> /etc/profile.d/scala.sh
+RUN yum localinstall scala-2.11.8.rpm -y
 RUN rm -f scala-2.11.8.rpm
 
-RUN alternatives --install "/usr/bin/scala" "scala" "/usr/local/scala/scala-2.11.8/bin/scala" 1
-RUN alternatives --install "/usr/bin/scalac" "scalac" "/usr/local/scala/scala-2.11.8/bin/scalac" 1
-RUN alternatives --install "/usr/bin/scalap" "scalap" "/usr/local/scala/scala-2.11.8/bin/scalap" 1
-RUN alternatives --install "/usr/bin/scaladoc" "scaladoc" "/usr/local/scala/scala-2.11.8/bin/scaladoc" 1
-RUN alternatives --install "/usr/bin/fsc" "fsc" "/usr/local/scala/scala-2.11.8/bin/fsc" 1
+RUN yum clean all
